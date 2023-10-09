@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>JavaScript Quiz</title>
+    <h1 id="JavaScript-Quiz">JavaScript Quiz</h1>
+</head>
+<body>
+    <header>
+        <a href="">View Highscore:<span class="highscore">0</span><div id="jt">,intials-</div><span class = "init"></span></a>
+        <a href="">Score: <span class = "score">0</span></a>
+        <!-- Below: allows 60 seconds to be display on the browser in timer.
+        Span tags allows me to target the number of seconds. -->
+        <p>Timer:<span class="countdown">60</span><span id="secs">seconds</span></p>
+        <button type="button" id="start">Start JavaScript Quiz</button>
+    </header>
+    <!-- The section tag is the questions and answers -->
+    <section class="javaquest">
+        <div class="js">
+            <!-- Below: js quest target the question in html. -->
+            <h1 class="jsquest">
+                Question
+            </h1>
+        </div>
+        <div class="pick">
+            <button type="button" id="option1">option1</button>
+            <button type="button" id="option2">option2</button>
+            <button type="button" id="option3">option3</button>
+            <button type="button" id="option4">option4</button>
+        </div>
+    </section>
+    <form class="submission">
+        <label>Initial Goes Here:</label>
+        <input type="text" id="subip">
+        <button type="submit" class="subbtn">Submit Your Initials</button>
+    </form>
+    <div id="results"></div>
+    <script src ="./assets/script.js"></script>
+</body>
+</html>
