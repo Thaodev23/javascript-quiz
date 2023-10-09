@@ -1,11 +1,12 @@
+// Author: Joey Thao
+// Collaborators: Jason Yang, Sichoun Lee
+// Date: 10/09/23
+// Description: Developing a JavaScript quiz to asses the knowledge of future developers.
+
 // Preparations:
 // 1. index.html
 // 2. style.css
 // 3. Make a variable for the button to start.
-// 
-
-
-
 
 // Below: how many seconds I inputted in the timer.
 var secondsLeft = 60;
