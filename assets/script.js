@@ -43,6 +43,9 @@ var subip = document.querySelector("#subip");
 var HighScore = document.querySelector(".highscore");
 var init = document.querySelector(".init");
 var JavaScriptQuiz = document.querySelector("#JavaScript-Quiz");
+var yourScore = document.querySelector("#your-score");
+var ing = document.querySelector("#ing");
+// var restartBtn = document.querySelector("#restart-button");
 
 var quest = [
     "Question #1: What are the initial for JavaScript?",
@@ -72,6 +75,7 @@ option2.addEventListener("click", clickOption2)
 option3.addEventListener("click", clickOption3)
 option4.addEventListener("click", clickOption4)
 
+// Below: have to put on the bottom so user can update the highscore.
 highScoreNumb = localStorage.getItem("Score");
 if (highScoreNumb > 0 ) {
     highScoreIp = localStorage.getItem("Initial");
@@ -86,6 +90,7 @@ function startQuiz(){
     // startButton.setAttribute("style", "display: none;")
     // Below: similar to display:none. Will not add space (not have any void space). Remove the button.
     startButton.remove();
+    // startButton.setAttribute("style", "display: none;");
     //  Below: set "quiz card to display". below have to be put inside the function startQuiz. Allowing the questions to appear.
     javaQuest.setAttribute("style","display: block;") 
     // Below: take the question and put it on the browser and also the choices. Preferably place before the setTime. "a" they all have to be strings. j allows us to cycle the questions and answers.
@@ -116,13 +121,26 @@ function setTime() {
     }, 1000);
 }
 
-// Below: function is use to send the message that "Quiz Is Over"
+// Below: function is use to send the message that "Quiz Is Over."
 function quizOver () {
-    // Below: target the question variable and send the text "Quiz Is Over"
-    question.textContent="Quiz Is Over"
-    // Below: setAttribute changes anything in the style sheet (Causes all the option 
-    // buttons to disappear).
-    pickThis.setAttribute("style", "display: none;")
+//     // Below: target the question variable and send out the score (scoreBoard variable).
+    question.textContent = scoreBoard;
+    yourScore.setAttribute("style", "display: block;");
+//     // Below: setAttribute changes anything in the style sheet (Causes all the option 
+//     // buttons to disappear).
+    pickThis.setAttribute("style", "display: none;");
+    incorrect.setAttribute("style", "display: none;");
+    JavaScriptQuiz.textContent = "Quiz Is Over";
+
+    if (highScoreNumb < scoreBoard || highScoreNumb === null) {
+        incorrect.textContent="New Highscore";
+        // Below: block allows for it to go from invisible (display:none) to visible (display:block). This form is the submission form.
+        form.setAttribute("style", "display: block;");
+    }
+
+    else {
+        incorrect.setAttribute("style", "display: none;");
+    }
 
 }
 
@@ -210,12 +228,14 @@ function quiz() {
     j++;
     if (j>3) {
         // Below: when j>3 the questions changes into the score.
-        question.textContent = scoreBoard,
+        question.textContent = scoreBoard;
         // question.textContent = "Your Score:";
         JavaScriptQuiz.textContent = "Quiz Is Over";
         // QuizIsOver.textContent = "Quiz Is Over";
         // Below: causes the button to disappear.
         pickThis.setAttribute("style","display:none;");
+        yourScore.setAttribute("style", "display: block;");
+        // restartBtn.setAttribute("style", "display: block;");
         // Below: allows for the timer to stop when all the questions are answer.
         clearInterval(timerInterval);
         
@@ -244,17 +264,60 @@ function checkScore () {
         // Below: block allows for it to go from invisible (display:none) to visible (display:block). This form is the submission form.
         form.setAttribute("style", "display: block;");
     }
+
+    else {
+        incorrect.setAttribute("style", "display: none;");
+    }
 }
 // Below: setting items to local storage after clicking.
 subbtn.addEventListener("click", subls);
 
+// Below: (event)
 function subls(event) {
+    // Below: preventDefault prevents the refreshing of the page when you click on another link or a submit form.
     event.preventDefault();
     localStorage.setItem("Score", scoreBoard);
     // Below: setting the (whatever user types in) into the local storage. Initial is the key. Setting it in the local storage.
     localStorage.setItem("Initial", subip.value);
-    // subip.setAttribute("style", "color: brown;");
+    init.setAttribute("style", "color: brown;");
+    // Below: it reads the key and score from the local storage and display them on the browser.
+    highScoreNumb = localStorage.getItem("Score");
+if (highScoreNumb > 0 ) {
+    highScoreIp = localStorage.getItem("Initial");
+    // Below: showing the user the previous highscore and initials.
+    init.textContent = highScoreIp;
+    HighScore.textContent=highScoreNumb;
+    subbtn.setAttribute("style", "display: none;");
+    subip.setAttribute("style", "display: none;");
+    ing.setAttribute("style", "display: none;");
+    JavaScriptQuiz.setAttribute("style", "display: none;");
+    j = 0;
+    // startButton.setAttribute("style", "display:block");
+    // startButton.textContent = "Restart Quiz";
+} 
+
 }
+
+// restartBtn.addEventListener("click", restartQuiz);
+
+// function restartQuiz(){
+//     // startButton.setAttribute("style", "display: none;")
+//     // Below: similar to display:none. Will not add space (not have any void space). Remove the button.
+//     // startButton.remove();
+//     restartBtn.setAttribute("style", "display: none;");
+//     //  Below: set "quiz card to display". below have to be put inside the function startQuiz. Allowing the questions to appear.
+//     javaQuest.setAttribute("style","display: block;") 
+//     // Below: take the question and put it on the browser and also the choices. Preferably place before the setTime. "a" they all have to be strings. j allows us to cycle the questions and answers.
+//     question.textContent = quest[j];
+
+//     option1.textContent = answer[j].choice1;
+//     option2.textContent = answer[j].choice2;
+//     option3.textContent = answer[j].choice3;
+//     option4.textContent = answer[j].choice4;
+//      // Start the set time function.
+//     setTime();
+// }
+
 
 // function subls() {
 //     localStorage.setItem("Initial", subip.value);

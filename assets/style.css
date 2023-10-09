@@ -23,7 +23,7 @@ p {
     justify-content: center; */
     position: relative;
     top: 100px;
-    left: 33%;
+    left: 38%;
     font-size: 50px;
 }
 
@@ -72,4 +72,19 @@ p {
 #jt,
 #secs {
     color: brown;
+}
+
+#your-score {
+    text-align: center;
+    font-size: large;
+    display: none;
+}
+
+/* #refresh {
+    display: none;
+    text-align: center;
+} */
+
+#restart-button {
+    display: none;
 }
