@@ -1,5 +1,9 @@
 # JavaScript Quiz
 
+https://github.com/Thaodev23/javascript-quiz
+
+https://thaodev23.github.io/javascript-quiz/
+
 ## User Story
 
 ```
