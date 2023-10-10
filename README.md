@@ -24,7 +24,9 @@ THEN students are presented with their own score and the highest score.
 
 ## Image
 
-
+![Alt text](pic1.png)
+![Alt text](pic2-1.png)
+![Alt text](pic3-1.png)
 
 ## Collaborators
 
